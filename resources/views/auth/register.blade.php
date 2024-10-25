@@ -17,13 +17,13 @@
         {{csrf_field()}}
         <div class="col-12">
           <label for="yourName" class="form-label">Your First Name </label>
-          <input type="text" name="first_name" class="form-control" id="yourName" required>
+          <input type="text" name="first_name" class="form-control" id="yourName" required value="{{ old('first_name')}}">
           <div class="invalid-feedback">Please, enter your first name!</div>
         </div>
 
         <div class="col-12">
           <label for="yourName" class="form-label">Your Last Name </label>
-          <input type="text" name="last_name" class="form-control" id="yourName" required>
+          <input type="text" name="last_name" class="form-control" id="yourName" required value="{{ old('last_name')}}">
           <div class="invalid-feedback">Please, enter your last name!</div>
         </div>
 
@@ -31,7 +31,7 @@
           <label for="yourUsername" class="form-label">Username</label>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend">@</span>
-            <input type="text" name="username" class="form-control" id="yourUsername" required>
+            <input type="text" name="username" class="form-control" id="yourUsername" required value="{{ old('username')}}">
             <div class="invalid-feedback">Please choose a username.</div>
           </div>
         </div>
@@ -39,6 +39,7 @@
         <div class="col-12">
           <label for="yourEmail" class="form-label">Your Email</label>
           <input type="email" name="email" class="form-control" id="yourEmail" required>
+          <span style="color: red;">{{ $errors->first('email')}}</span>
           <div class="invalid-feedback">Please enter a valid Email adddress!</div>
         </div>
 
