@@ -8,7 +8,7 @@ class DashboardController extends Controller
 {
     public function index(Request $request){
         //dd("Yoo");
-
-        return view('admin.dashboard.list');
+        $data['meta_title'] = 'admin_dashboard';
+        return view('admin.dashboard.list',$data);
     }
 }

@@ -17,7 +17,7 @@ class AuthController extends Controller
 
     public function register(Request $request){
         //dd("Yoo");
-        $data['meta_title'] = 'login';
+        $data['meta_title'] = 'register';
         return view('auth.register');
     }
 
