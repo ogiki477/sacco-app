@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -57,6 +58,22 @@ class AuthController extends Controller
 
     public function login_insert(Request $request){
 
-        dd("Yoo");
+        //dd("Yoo");
+        if(Auth::attempt(['email' => $request->email,'password' => $request->password], true)){
+            if(Auth::User()->is_role == '1'){
+
+                return redirect()->intended('admin/dashboard');
+
+            }elseif(Auth::User()->is_role == '0'){
+                return redirect()->intended('staff/dashboard');
+
+            }else{
+                return redirect('/')->with('error','Invalid Credentials');
+            }
+        }else{
+
+            return redirect('/')->with('error','Invalid Credentials');
+
+        }
     }
 }

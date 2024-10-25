@@ -20,7 +20,7 @@
                       <label  class="form-label">Email</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="email" name="email" class="form-control"  required value="{{ old('email')}}">
+                        <input type="email" name="email" value="{{ old('email') }}" class="form-control"  required >
                         <div class="invalid-feedback">Please enter a valid email.</div>
                       </div>
                     </div>

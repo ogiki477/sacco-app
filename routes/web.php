@@ -29,10 +29,16 @@ Route::get('register',[AuthController::class,'register']);
 Route::get('forgot',[AuthController::class,'forgot']);
 Route::post('register',[AuthController::class,'register_insert']);
 
-//Dashboard
+//middleware/Admin
+Route::group(['middleware' => 'admin'], function(){
+    Route::get('admin/dashboard',[DashboardController::class,'index']);
+    Route::get('admin/staff/list',[StaffController::class,'index']);
+});
 
-Route::get('admin/dashboard',[DashboardController::class,'index']);
+//middleware/Staff
+Route::group(['middleware' => 'staff'], function(){
+    Route::get('staff/dashboard',[DashboardController::class,'index2']);
+});
 
-//Staff
 
-Route::get('admin/staff/list',[StaffController::class,'index']);
+
