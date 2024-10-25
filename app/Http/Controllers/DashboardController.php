@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(Request $request){
-        dd("Yoo");
+        //dd("Yoo");
+
+        return view('admin.dashboard.list');
     }
 }
