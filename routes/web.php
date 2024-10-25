@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/',[AuthController::class,'login']);
+Route::get('register',[AuthController::class,'register']);
+Route::get('forgot',[AuthController::class,'forgot']);
+
+
