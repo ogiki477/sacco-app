@@ -11,20 +11,20 @@ class AuthController extends Controller
 {
     public function login(Request $request){
         $data['meta_title'] = 'login';
-        return view('auth.login');
+        return view('auth.login',$data);
         
     }
 
     public function register(Request $request){
         //dd("Yoo");
         $data['meta_title'] = 'register';
-        return view('auth.register');
+        return view('auth.register',$data);
     }
 
     public function forgot(Request $request){
         //dd("Yoo");
         $data['meta_title'] = 'forgot';
-        return view('auth.forgot');
+        return view('auth.forgot',$data);
     }
 
     public function register_insert(Request $request){
@@ -53,5 +53,10 @@ class AuthController extends Controller
     $data->save();
 
     return redirect('')->with('success','Successfully registered');
+    }
+
+    public function login_insert(Request $request){
+
+        dd("Yoo");
     }
 }

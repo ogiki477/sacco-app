@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
+use PharIo\Manifest\AuthorCollectionIterator;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/', function () {
 //Auth
 
 Route::get('/',[AuthController::class,'login']);
+Route::post('login_post',[AuthController::class,'login_insert']);
 Route::get('register',[AuthController::class,'register']);
 Route::get('forgot',[AuthController::class,'forgot']);
 Route::post('register',[AuthController::class,'register_insert']);
