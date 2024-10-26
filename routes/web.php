@@ -28,6 +28,7 @@ Route::post('login_post',[AuthController::class,'login_insert']);
 Route::get('register',[AuthController::class,'register']);
 Route::get('forgot',[AuthController::class,'forgot']);
 Route::post('register',[AuthController::class,'register_insert']);
+Route::get('logout',[AuthController::class,'logout']);
 
 //middleware/Admin
 Route::group(['middleware' => 'admin'], function(){
@@ -37,7 +38,7 @@ Route::group(['middleware' => 'admin'], function(){
 
 //middleware/Staff
 Route::group(['middleware' => 'staff'], function(){
-    Route::get('staff/dashboard',[DashboardController::class,'index2']);
+    Route::get('staff/dashboard',[DashboardController::class,'index']);
 });
 
 

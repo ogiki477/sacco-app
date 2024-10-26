@@ -76,4 +76,12 @@ class AuthController extends Controller
 
         }
     }
+
+    public function logout(Request $request){
+
+        //dd("Yooo");
+
+        Auth::logout();
+        return redirect('/');
+    }
 }
