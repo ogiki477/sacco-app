@@ -32,8 +32,11 @@ Route::get('logout',[AuthController::class,'logout']);
 
 //middleware/Admin
 Route::group(['middleware' => 'admin'], function(){
+    //Staff
     Route::get('admin/dashboard',[DashboardController::class,'index']);
     Route::get('admin/staff/list',[StaffController::class,'index']);
+    Route::get('admin/staff/add',[StaffController::class,'add']);
+
 });
 
 //middleware/Staff
