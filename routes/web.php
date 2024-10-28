@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoanPlanController;
 use App\Http\Controllers\LoanTypeController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,17 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/loan_types/edit/{id}',[LoanTypeController::class,'edit']);
     Route::post('admin/loan_types/edit/{id}',[LoanTypeController::class,'update']);
     Route::get('admin/loan_types/delete/{id}',[LoanTypeController::class,'destroy']);
+
+
+    //Loan Plan 
+
+    Route::get('admin/loan_plan/list',[LoanPlanController::class,'index']);
+    Route::get('admin/loan_plan/add',[LoanPlanController::class,'create']);
+    Route::post('admin/loan_plan/add',[LoanPlanController::class,'store']);
+    Route::get('admin/loan_plan/edit/{id}',[LoanPlanController::class,'edit']);
+    Route::post('admin/loan_plan/edit/{id}',[LoanPlanController::class,'update']);
+    Route::get('admin/loan_plan/delete/{id}',[LoanPlanController::class,'destroy']);
+
 
 
 });
