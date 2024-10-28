@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LoanType;
 use Illuminate\Http\Request;
 
 class LoanTypeController extends Controller
@@ -13,7 +14,7 @@ class LoanTypeController extends Controller
     {
        // dd('Yoo');
        $data['meta_title'] = 'loan_types_list';
-       $data['getRecord']  =
+       $data['getRecord']  = LoanType::get();
        return view('admin.loan_types.list',$data);
     }
 
@@ -22,7 +23,9 @@ class LoanTypeController extends Controller
      */
     public function create()
     {
-        //
+       // dd("Yooooo");
+       $data['meta_title'] = 'add_loan_type';
+       return view('admin.loan_types.add',$data);
     }
 
     /**
@@ -30,7 +33,7 @@ class LoanTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd("Yooo");
     }
 
     /**

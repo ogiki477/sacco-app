@@ -45,6 +45,9 @@ Route::group(['middleware' => 'admin'], function(){
     //Loan Types
     
     Route::get('admin/loan_types/list',[LoanTypeController::class,'index']);
+    Route::get('admin/loan_types/add',[LoanTypeController::class,'create']);
+    Route::post('admin/loan_types/add',[LoanTypeController::class,'store']);
+
 
 });
 
