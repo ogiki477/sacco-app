@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getProfilePic(){
+
+        if(!empty($this->profile_picture) && file_exists('upload/profile/'.$this->profile_picture)){
+            return url('upload/profile/'.$this->profile_picture);
+        }
+    }
 }
