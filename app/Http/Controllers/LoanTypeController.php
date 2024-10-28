@@ -13,7 +13,7 @@ class LoanTypeController extends Controller
     {
        // dd('Yoo');
        $data['meta_title'] = 'loan_types_list';
-
+       $data['getRecord']  =
        return view('admin.loan_types.list',$data);
     }
 
