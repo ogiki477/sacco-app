@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoanTypeController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 use PharIo\Manifest\AuthorCollectionIterator;
@@ -41,6 +42,9 @@ Route::group(['middleware' => 'admin'], function(){
     Route::post('admin/staff/edit/{id}',[StaffController::class,'edit_insert']);
     Route::get('admin/staff/delete/{id}',[StaffController::class,'delete_insert']);
 
+    //Loan Types
+    
+    Route::get('admin/loan_types/list',[LoanTypeController::class,'index']);
 
 });
 

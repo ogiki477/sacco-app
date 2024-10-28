@@ -19,7 +19,7 @@
       
       
       <li class="nav-item">
-        <a class="nav-link @if(Request::segment(2) == 'loan_types') @else collapsed @endif" href="{{url('admin/loan/list')}}">
+        <a class="nav-link @if(Request::segment(2) == 'loan_types') @else collapsed @endif" href="{{url('admin/loan_types/list')}}">
           <i class="bi bi-currency-dollar"></i>
           <span>Loan Types</span>
         </a>
