@@ -50,23 +50,12 @@ class LoanTypeController extends Controller
 }
 
 
-
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $data['getRecord'] = LoanType::find($id);
+        $data['meta_title'] = 'edit_loan';
+        return view('admin.loan_types.edit',$data);
+
     }
 
     /**
@@ -74,7 +63,16 @@ class LoanTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //dd("Yoo");
+        $data = LoanType::find($id);
+
+        $data->type_name = trim($request->type_name);
+        $data->description = trim($request->description);
+
+        $data->save();
+
+        return redirect('admin/loan_types/list')->with('success','Loan Successfully Updated');
+
     }
 
     /**
@@ -82,6 +80,8 @@ class LoanTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = LoanType::find($id);
+        $data->delete();
+        return redirect('admin/loan_types/list')->with('error','Loan Deleted');
     }
 }

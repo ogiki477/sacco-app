@@ -31,8 +31,8 @@
               <td>{{$getRecord->type_name}}</td>
               <td>{{$getRecord->description}}</td>
               <td> 
-                  <a href="{{ url('admin/loan_type/edit/'.$getRecord->id) }}" class="btn btn-success"> <i class="bi bi-pencil-square"></i> </a>
-                  <a href="{{ url('admin/loan_type/delete/'.$getRecord->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')"><i class="bi bi-trash"></i></a>
+                  <a href="{{ url('admin/loan_types/edit/'.$getRecord->id) }}" class="btn btn-success"> <i class="bi bi-pencil-square"></i> </a>
+                  <a href="{{ url('admin/loan_types/delete/'.$getRecord->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')"><i class="bi bi-trash"></i></a>
                   
               </td>
               </tr>
