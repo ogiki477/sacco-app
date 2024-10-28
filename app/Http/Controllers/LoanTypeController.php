@@ -33,8 +33,25 @@ class LoanTypeController extends Controller
      */
     public function store(Request $request)
     {
-        dd("Yooo");
-    }
+       // dd("Yooo");
+       $data = $request->validate([
+        'type_name' => 'required',
+        'description' => 'required',
+
+    ]);
+
+    $data = new LoanType();
+    
+    $data->type_name = trim($request->type_name);
+    $data->description = trim($request->description);
+    $data->save();
+
+    return redirect('admin/loan_types/list')->with('success','Loan Successfully Added');
+}
+
+
+
+
 
     /**
      * Display the specified resource.
