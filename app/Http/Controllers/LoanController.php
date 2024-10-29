@@ -75,7 +75,16 @@ class LoanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['meta_title'] = 'edit_loan';
+      
+        $data['getLoanStaff'] = User::where('is_role','=' ,'0')->where('is_delete','=','0')->get();
+        $data['getLoanUser'] = LoanUser::get();
+        $data['getLoanType'] = LoanType::get();
+        $data['getLoanPlan'] = LoanPlan::get();
+ 
+        $data['getRecord'] = Loan::find($id);
+ 
+        return view('admin.loans.edit',$data);
     }
 
     /**
@@ -83,7 +92,28 @@ class LoanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'user_id' => 'required',
+            'loan_plans_id' => 'required',
+            'loan_types_id' => 'required',
+            'staff_id' => 'required',
+            'loan_amount' => 'required',
+            'purpose' => 'required'
+    
+           ]);
+
+        $data  = Loan::find($id);
+
+        $data->user_id = trim($request->user_id);
+       $data->loan_types_id = trim($request->loan_types_id);
+       $data->loan_plans_id = trim($request->loan_plans_id);
+       $data->staff_id = trim($request->staff_id);
+       $data->loan_amount = trim($request->loan_amount);
+       $data->purpose = trim($request->purpose);
+
+       $data->save();
+
+       return redirect('admin/loans/list')->with('success','The Loan has been Updated Successfully');
     }
 
     /**
@@ -91,6 +121,11 @@ class LoanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
+        $data = Loan::find($id);
+
+        $data->delete();
+
+        return redirect('admin/loans/list')->with('error','The Loan has been Deleted');
     }
 }
