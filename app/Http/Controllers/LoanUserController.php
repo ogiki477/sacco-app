@@ -26,7 +26,7 @@ class LoanUserController extends Controller
     {
         //dd("Yoooo");
 
-        $data['meat_title'] = "add_user";
+        $data['meta_title'] = "add_user";
 
         return view('admin.loanuser.add',$data);
     }
@@ -36,7 +36,34 @@ class LoanUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       // dd('Yooo');
+
+       $data = $request->validate([
+        'first_name' => 'required',
+        'last_name'  => 'required',
+        'address' => 'required',
+        'contact' => 'required',
+        'email' => 'required|unique:loan_user',
+        'tax_id' => 'required'
+
+    ]);
+
+    $data = new LoanUser();
+
+   
+
+    $data->first_name = trim($request->first_name);
+    $data->last_name = trim($request->last_name);
+    $data->address = trim($request->address);
+    $data->contact = trim($request->contact);
+    $data->email = trim($request->email);
+    $data->tax_id = trim($request->tax_id);
+
+    $data->save();
+
+    return redirect('admin/loan_user/list')->with('success','The loan User is Successfully Added');
+    
+
     }
 
     /**
