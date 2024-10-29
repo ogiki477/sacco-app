@@ -72,7 +72,11 @@ class LoanUserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //dd("Yoooo");
+
+        $data['meta_title'] = 'edit_user';
+
+        return view('admin.loanuser.edit',$data);
     }
 
     /**
