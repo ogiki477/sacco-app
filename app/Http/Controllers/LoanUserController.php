@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LoanUser;
 use Illuminate\Http\Request;
 
 class LoanUserController extends Controller
@@ -14,7 +15,7 @@ class LoanUserController extends Controller
         //dd("Yoooo");
 
         $data['meta_title'] = "loan_users";
-
+        $data['getRecord'] = LoanUser::get();
         return view('admin.loanuser.list',$data);
     }
 
@@ -23,7 +24,11 @@ class LoanUserController extends Controller
      */
     public function create()
     {
-        //
+        //dd("Yoooo");
+
+        $data['meat_title'] = "add_user";
+
+        return view('admin.loanuser.add',$data);
     }
 
     /**
