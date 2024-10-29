@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\LoanPlanController;
 use App\Http\Controllers\LoanTypeController;
+use App\Http\Controllers\LoanUserController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 use PharIo\Manifest\AuthorCollectionIterator;
@@ -68,6 +69,11 @@ Route::group(['middleware' => 'admin'], function(){
 
     Route::get('admin/loans/list',[LoanController::class,'index']);
     Route::get('admin/loans/add',[LoanController::class,'create']);
+
+
+
+    //LoanUser
+    Route::get('admin/loan_user/list',[LoanUserController::class,'index']);
 
 
 
