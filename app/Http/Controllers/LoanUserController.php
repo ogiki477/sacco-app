@@ -76,6 +76,8 @@ class LoanUserController extends Controller
 
         $data['meta_title'] = 'edit_user';
 
+        $data['getRecord'] = LoanUser::find($id);
+
         return view('admin.loanuser.edit',$data);
     }
 
@@ -84,7 +86,29 @@ class LoanUserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //dd("Yoooooo");
+
+        
+        $data = $request->validate([
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'address' => 'required',
+            'tax_id' => 'required',
+            'contact' => 'required',
+        ]);
+
+        $data = LoanUser::find($id);
+
+        $data->first_name = trim($request->first_name);
+        $data->last_name = trim($request->last_name);
+        $data->address = trim($request->address);
+        $data->contact = trim($request->contact);
+        $data->email = trim($request->email);
+        $data->tax_id = trim($request->tax_id);
+
+        $data->save();
+
+        return redirect('admin/loan_user/list')->with('success','The loan User is Updated Successfully!!');
     }
 
     /**
@@ -92,6 +116,10 @@ class LoanUserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = LoanUser::find($id);
+        $data->delete();
+        return redirect('admin/loan_user/list')->with('error','The loan User has been deleted');
+
+
     }
 }
