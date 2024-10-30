@@ -49,11 +49,12 @@
               <div class="row mb-3">
                 <label for="inputNumber" class="col-sm-2 col-form-label">Password</label>
                 <div class="col-sm-10">
-                  <input type="password" name="password" class="form-control"  value="{{ $getRecord->password }} ">
-                  (Leave blank if you are not changing your password)
-                  <span style="color: red;">{{ $errors->first('password') }}</span>
+                    <input type="password" name="password" class="form-control">
+                    <h6 style="color: green;">(Leave blank if you are not changing your password)</h6>
+
+                    <span style="color: red;">{{ $errors->first('password') }}</span>
                 </div>
-              </div>
+            </div>
              
              
               <div class="row mb-3">
