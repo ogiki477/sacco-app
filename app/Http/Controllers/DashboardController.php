@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Loan;
+use App\Models\LoanPlan;
+use App\Models\LoanType;
+use App\Models\LoanUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +17,11 @@ class DashboardController extends Controller
     public function index(Request $request){
         //dd("Yoo");
         if(Auth::user()->is_role == 1){ 
+        $data['getStaffandAdminCount'] = User::get()->count();
+        $data['getloanTypesCount'] = LoanType::get()->count();
+        $data['getloanPlanCount'] = LoanPlan::get()->count();
+        $data['getloanCount'] = Loan::get()->count();
+        $data['getloanUserCount'] = LoanUser::get()->count();
         $data['meta_title'] = 'admin_dashboard';
         return view('admin.dashboard.list',$data);
         } elseif(Auth::user()->is_role == 0){
