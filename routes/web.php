@@ -45,6 +45,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/staff/edit/{id}',[StaffController::class,'edit']);
     Route::post('admin/staff/edit/{id}',[StaffController::class,'edit_insert']);
     Route::get('admin/staff/delete/{id}',[StaffController::class,'delete_insert']);
+    Route::get('admin/staff/view/{id}',[StaffController::class,'staff_view']);
 
     //Loan Types
     

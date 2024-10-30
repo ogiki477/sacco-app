@@ -107,13 +107,23 @@ class StaffController extends Controller
     
            $data->save();
     
-           return redirect('admin/staff/list')->with('success','The User has been created Successfully');
+           return redirect('admin/staff/list')->with('success','The User has been Updated Successfully');
      }
 
      public function delete_insert(Request $request,$id){
         $data = User::find($id);
         $data->delete();
         return redirect('admin/staff/list')->with('error','The User has been Deleted');
+     }
+
+
+     public function staff_view(Request $request,$id){
+
+      //dd("Yooooo");
+
+      $data['meta_title'] = 'show';
+      $data['getRecord'] = User::find($id);
+      return view('admin.staff.view',$data);
      }
  
 }
