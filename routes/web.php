@@ -86,7 +86,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::post('admin/loan_user/update/{id}',[LoanUserController::class,'update']);
     Route::get('admin/loan_user/delete/{id}',[LoanUserController::class,'destroy']);
 
-
+   
 
 
 });
