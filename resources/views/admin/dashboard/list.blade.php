@@ -64,7 +64,7 @@
 
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card revenue-card">
-                <a href="{{  url('admin/loan_types/list')}}">
+                <a href="{{  url('admin/loan_plan/list')}}">
                 <div class="card-body">
                   <h5 class="card-title">Loan Plans </h5>
 
@@ -73,7 +73,7 @@
                       <i class="bi bi-archive"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>{{$getloanTypesCount}}</h6>
+                      <h6>{{$getloanPlanCount}}</h6>
                       
 
                     </div>
@@ -83,6 +83,61 @@
 
               </div>
             </div>
+
+
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+                <a href="{{  url('admin/loans/list')}}">
+                <div class="card-body">
+                  <h5 class="card-title">Loans</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-bank"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{$getloanCount}}</h6>
+                      
+
+                    </div>
+                  </div>
+                </div>
+                </a>
+
+              </div>
+            </div>
+
+
+
+
+
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+                <a href="{{  url('admin/loan_user/list')}}">
+                <div class="card-body">
+                  <h5 class="card-title">Loan Users </h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{$getloanUserCount}}</h6>
+                      
+
+                    </div>
+                  </div>
+                </div>
+                </a>
+
+              </div>
+            </div>
+
+
+
+
+
+            
            
 
                 </div>
