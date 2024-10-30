@@ -31,36 +31,52 @@ class DashboardController extends Controller
         return view('admin.profile.update',$data);
     }
 
-    public function profile_update(Request $request){
+    public function profile_update(Request $request)
+{
+    $request->validate([
+        'email' => 'required|unique:users,email,' . Auth::user()->id,
+    ]);
 
-        //dd("Yoooo");
+    $user = User::find(Auth::user()->id);
 
-        $data = $request->validate([
-            'email' => 'required|unique:users,email,'.Auth::user()->id
-        ]);
-           $data = User::find(Auth::user()->id);
-           $data->first_name = trim($request->first_name);
-           $data->last_name = trim($request->last_name);
-           $data->email = trim($request->email);
-           $data->username = trim($request->username);
-           $data->dob = $request->dob;
-           $data->mobile_number = trim($request->mobile_number);
-    
-           if(!empty($request->file('profile_picture'))){
-             $file = $request->file('profile_picture');
-             $randomStr = Str::random(30);
-             $filename = $randomStr. '.'.$file->getClientOriginalExtension();
-             $file->move('upload/profile/',$filename);
-             $data->profile_picture = $filename;
-           }
-    
-           $data->remember_token = Str::random(50);
-    
-           $data->save();
-    
-           return redirect('admin/profile')->with('success','Profile Successfully Updated');
+    // Check if there are any changes
+    $hasChanges = (
+        trim($request->first_name) !== $user->first_name ||
+        trim($request->last_name) !== $user->last_name ||
+        trim($request->email) !== $user->email ||
+        trim($request->username) !== $user->username ||
+        $request->dob !== $user->dob ||
+        trim($request->mobile_number) !== $user->mobile_number ||
+        !empty($request->file('profile_picture'))
+    );
 
+    if ($hasChanges) {
+        $user->first_name = trim($request->first_name);
+        $user->last_name = trim($request->last_name);
+        $user->email = trim($request->email);
+        $user->username = trim($request->username);
+        $user->dob = $request->dob;
+        $user->mobile_number = trim($request->mobile_number);
+
+        if (!empty($request->file('profile_picture'))) {
+            $file = $request->file('profile_picture');
+            $randomStr = Str::random(30);
+            $filename = $randomStr . '.' . $file->getClientOriginalExtension();
+            $file->move('upload/profile/', $filename);
+            $user->profile_picture = $filename;
+        }
+
+        $user->remember_token = Str::random(50);
+
+        $user->save();
+
+        return redirect('admin/profile')->with('success', 'Profile Successfully Updated');
     }
+
+    // Redirect without message if no changes were made
+    return redirect('admin/profile');
+}
+
 
     
 }
