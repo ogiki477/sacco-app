@@ -49,7 +49,7 @@
 
       <li class="nav-item">
         <a class="nav-link @if(Request::segment(2) == 'profile') @else collapsed @endif" href="{{url('admin/profile')}}">
-          <i class="bi bi-gem"></i>
+          <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
       </li>

@@ -9,6 +9,7 @@ use App\Http\Controllers\LoanUserController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 use PharIo\Manifest\AuthorCollectionIterator;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +86,11 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/loan_user/edit/{id}',[LoanUserController::class,'edit']);
     Route::post('admin/loan_user/update/{id}',[LoanUserController::class,'update']);
     Route::get('admin/loan_user/delete/{id}',[LoanUserController::class,'destroy']);
+
+
+    //Profile 
+    Route::get('admin/profile',[DashboardController::class,'profile']);
+    Route::post('admin/profile/update',[DashboardController::class,'profile_update']);
 
    
 
