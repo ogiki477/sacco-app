@@ -3,6 +3,8 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
+    @if(Auth::user()->is_role == '1')
+
       <li class="nav-item">
         <a class="nav-link  @if(Request::segment(2) == 'dashboard') @else collapsed @endif" href="{{url('admin/dashboard')}}">
           <i class="bi bi-grid"></i>
@@ -61,6 +63,22 @@
         </a>
       </li><!-- End Login Page Nav -->
 
+    @endif
+
+
+    @if(Auth::user()->is_role == '0')
+
+    <li class="nav-item">
+        <a class="nav-link  @if(Request::segment(2) == 'dashboard') @else collapsed @endif" href="{{url('staff/dashboard')}}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+
+    @endif
+
+     
+    
    
     </ul>
 

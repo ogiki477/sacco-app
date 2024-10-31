@@ -27,7 +27,7 @@ class DashboardController extends Controller
         } elseif(Auth::user()->is_role == 0){
             $data['meta_title'] = 'staff_dashboard';
             //dd("Staff Dashboard");
-            return view('admin.staff.dashboard.list',$data);
+            return view('admin_staff.dashboard.list',$data);
         }
     }
 
