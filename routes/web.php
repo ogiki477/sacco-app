@@ -105,6 +105,10 @@ Route::group(['middleware' => 'staff'], function(){
     //Loan User
     Route::get('staff/loan_user/list',[LoanUserController::class,'staff_loan_user']);
     Route::get('staff/loan_user/delete/{id}',[LoanUserController::class,'delete_loan_user']);
+    Route::get('staff/profile',[DashboardController::class,'profile_staff']);
+    Route::post('staff/profile',[DashboardController::class,'profile_staff_update']);
+    
+
     
 });
 
