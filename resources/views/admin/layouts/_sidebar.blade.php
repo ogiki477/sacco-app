@@ -75,6 +75,14 @@
         </a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link  @if(Request::segment(2) == 'loan_user') @else collapsed @endif" href="{{url('staff/loan_user/list')}}">
+          <i class="bi bi-person"></i>
+          <span>Loan User</span>
+        </a>
+      </li>
+
+
     @endif
 
      
