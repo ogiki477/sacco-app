@@ -32,8 +32,8 @@
                     <th scope="row">{{$getRecord->id}}</th>
                     <td>{{ date('d-m-Y',strtotime($getRecord->created_at)) }}</td>
                     <td>{{$getRecord->user_id}}</td>
-                    <td>{{$getRecord->loan_types_id}}</td>
-                    <td>{{$getRecord->loan_plans_id}}</td>
+                    <td>{{$getRecord->type_name}}</td>
+                    <td>{{$getRecord->Months}}</td>
                     <td>{{$getRecord->staff_id}}</td>
                     <td>{{$getRecord->loan_amount}}</td>
                     <td>{{$getRecord->purpose}}</td>
