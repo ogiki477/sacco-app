@@ -23,7 +23,7 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Ogiki Moses Odera</h6>
+              <h6>{{ Auth::user()->first_name .' '.  Auth::user()->last_name }}</h6>
               <span>Web Designer</span>
             </li>
             <li>
