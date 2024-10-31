@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Loan;
 use App\Models\LoanUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoanUserController extends Controller
 {
@@ -120,6 +122,28 @@ class LoanUserController extends Controller
         $data->delete();
         return redirect('admin/loan_user/list')->with('error','The loan User has been deleted');
 
+
+    }
+
+    // Staff Functions 
+
+    public function staff_loan_user(Request $request){
+        //dd("Yoooo");
+
+        $data['meta_title'] = 'staff_loan_users';
+
+        $data['getRecord'] = Loan::getLoanStaff(Auth::user()->id);
+
+        return view('admin_staff.loan_user.staff_loan_user',$data);
+    }
+
+    public function delete_loan_user(Request $request ,$id){
+        //dd("Yoooo");
+
+        $data = Loan::find($id);
+        $data->delete();
+
+        return redirect('staff/loan_user/list')->with('error','The Loan is Deleted');
 
     }
 }

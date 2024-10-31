@@ -101,6 +101,11 @@ Route::group(['middleware' => 'admin'], function(){
 //middleware/Staff
 Route::group(['middleware' => 'staff'], function(){
     Route::get('staff/dashboard',[DashboardController::class,'index']);
+
+    //Loan User
+    Route::get('staff/loan_user/list',[LoanUserController::class,'staff_loan_user']);
+    Route::get('staff/loan_user/delete/{id}',[LoanUserController::class,'delete_loan_user']);
+    
 });
 
 
