@@ -160,6 +160,7 @@ class DashboardController extends Controller
     public function website_logo(Request $request){
 
         $data['meta_title'] = 'logo_update';
+        $data['getRecord'] = Logo::find(1);
 
         return view('admin.logo.update',$data);
     }
@@ -167,10 +168,14 @@ class DashboardController extends Controller
     public function website_logo_insert(Request $request){
         //dd("Yooo");
 
-        $data = new Logo();
+        $data = Logo::find(1);
 
         $data->name = trim($request->name);
         if(!empty($request->file('logo'))){
+
+            if(!empty($data->logo) && file_exists('upload/logo/'.$data->logo)){
+                unlink('upload/logo/'.$data->logo);
+            }
             $file = $request->file('logo');
             $randomStr = Str::random(30);
             

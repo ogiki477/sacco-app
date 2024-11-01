@@ -1,3 +1,11 @@
+@php 
+
+$GetLogoImage = App\Models\Logo::find(1);
+
+ @endphp
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +18,8 @@
   <meta content="" name="keywords">   
 
   <!-- Favicons -->
-  <link href="{{url('assets/img/sacco2.jpeg' )}}" rel="icon">
-  <link href="{{url('assets/img/chaticon.png' )}}" rel="apple-touch-icon">
+  <link href="{{ $GetLogoImage->getLogo() }}" rel="icon">
+ 
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -55,8 +63,8 @@
 
               <div class="d-flex justify-content-center py-4">
                 <a href="" class="logo d-flex align-items-center w-auto">
-                  <img src="{{url('assets/img/sacco2.jpeg' )}}" alt="">
-                  <span class="d-none d-lg-block">SACCO</span>
+                  <img src="{{$GetLogoImage->getLogo()}}" alt="">
+                  <span class="d-none d-lg-block">{{ $GetLogoImage->name  }}</span>
                 </a>
               </div>
               <!-- End Logo -->

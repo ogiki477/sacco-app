@@ -17,7 +17,7 @@
                
                 <label class="col-sm-2 col-form-label">Logo Name <span  style="color: red"> * </span></label>
                 <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" required>
+                    <input type="text" name="name" class="form-control" required value="{{ $getRecord->name}}">
                 </div>
             </div>
 
@@ -25,6 +25,11 @@
                 <label class="col-sm-2 col-form-label">Logo Image</label>
                 <div class="col-sm-10">
                     <input type="file" name="logo" class="form-control">
+                    @if(!empty($getRecord->logo))
+
+                    <img src="{{ $getRecord->getLogo() }}" height="100px" width="100px">
+
+                    @endif
                 </div>
             </div>
             

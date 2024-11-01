@@ -1,10 +1,15 @@
+ @php 
+
+$GetLogoImage = App\Models\Logo::find(1);
+
+ @endphp
  <!-- ======= Header ======= -->
  <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="{{url('admin/dashboard')}}" class="logo d-flex align-items-center">
-        <img src="{{url('assets/img/sacco2.jpeg')}}" alt="">
-        <span class="d-none d-lg-block">SACCO M.S</span>
+        <img src="{{$GetLogoImage->getLogo()}}" alt="">
+        <span class="d-none d-lg-block">{{ $GetLogoImage->name  }}</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
