@@ -17,38 +17,44 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{url('assets/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
+            <img src="{{ Auth::user()->getProfilePic() }}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{Auth::user()->username}}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{ Auth::user()->first_name .' '.  Auth::user()->last_name }}</h6>
-              <span>Web Designer</span>
+              <span>{{ Auth::user()->email}}</span>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
 
+            @if(Auth::user()->is_role == '1')
+
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="{{ url('admin/profile')}}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
             </li>
+            @endif
+
+            @if(Auth::user()->is_role == '0')
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{{ url('staff/profile')}}">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            @endif
             <li>
               <hr class="dropdown-divider">
             </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+            
+            
             <li>
               <hr class="dropdown-divider">
             </li>
