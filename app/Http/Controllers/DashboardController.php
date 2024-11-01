@@ -156,5 +156,10 @@ class DashboardController extends Controller
         return redirect('staff/profile');
     }
     
-    
+    public function website_logo(Request $request){
+
+        $data['meta_title'] = 'logo_update';
+
+        return view('admin.logo.update',$data);
+    }
 }

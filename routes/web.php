@@ -92,6 +92,10 @@ Route::group(['middleware' => 'admin'], function(){
 
    
 
+    //Logo
+
+    Route::get('admin/logo',[DashboardController::class,'website_logo']);
+
 
 });
 
