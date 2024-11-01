@@ -6,6 +6,7 @@ use App\Models\Loan;
 use App\Models\LoanPlan;
 use App\Models\LoanType;
 use App\Models\LoanUser;
+use App\Models\Logo;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -161,5 +162,24 @@ class DashboardController extends Controller
         $data['meta_title'] = 'logo_update';
 
         return view('admin.logo.update',$data);
+    }
+
+    public function website_logo_insert(Request $request){
+        //dd("Yooo");
+
+        $data = new Logo();
+
+        $data->name = trim($request->name);
+        if(!empty($request->file('logo'))){
+            $file = $request->file('logo');
+            $randomStr = Str::random(30);
+            
+            $filename = $randomStr . '.' . $file->getClientOriginalExtension();
+            $file->move('upload/logo/', $filename);
+            $data->logo = $filename;
+        }
+        $data->save();
+
+        return redirect('admin/logo')->with('success','Logo Updated Successfully');
     }
 }

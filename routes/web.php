@@ -95,6 +95,7 @@ Route::group(['middleware' => 'admin'], function(){
     //Logo
 
     Route::get('admin/logo',[DashboardController::class,'website_logo']);
+    Route::post('admin/logo',[DashboardController::class,'website_logo_insert']);
 
 
 });
