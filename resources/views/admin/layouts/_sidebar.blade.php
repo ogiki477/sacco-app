@@ -57,6 +57,13 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) == 'logo') @else collapsed @endif" href="{{url('admin/logo')}}">
+          <i class="bi bi-card-image"></i>
+          <span>Logo</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link collapsed" href="{{url('logout')}}">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Log Out</span>
