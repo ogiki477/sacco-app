@@ -32,6 +32,7 @@ Route::get('/',[AuthController::class,'login']);
 Route::post('login_post',[AuthController::class,'login_insert']);
 Route::get('register',[AuthController::class,'register']);
 Route::get('forgot',[AuthController::class,'forgot']);
+Route::post('forgot',[AuthController::class,'forgot_update']);
 Route::post('register',[AuthController::class,'register_insert']);
 Route::get('logout',[AuthController::class,'logout']);
 

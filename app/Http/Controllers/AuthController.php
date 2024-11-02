@@ -28,6 +28,20 @@ class AuthController extends Controller
         return view('auth.forgot',$data);
     }
 
+
+    public function forgot_update(Request $request){
+
+       // dd("Yooo");
+       $count = User::where('email','=',$request->email)->count();
+
+       if($count > 0){
+
+       }else{
+        return redirect()->back()->with('error','Email Not Found');
+       }
+
+    }
+
     public function register_insert(Request $request){
        // dd('yooo');
 
@@ -84,4 +98,6 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+   
 }
