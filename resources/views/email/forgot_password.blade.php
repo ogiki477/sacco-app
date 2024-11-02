@@ -1,12 +1,14 @@
-Hello, {{ $data->name}}
+Hello, {{ $data->first_name .' '. $data->last_name}}
 
 <br>
 
-Your New Password:- <b> {{ $data->random_pass}}</b>
+Your New Password: <b> {{ $data->random_pass}}</b>
 
 <br>
 
-Best Regards From {{ config('app.name') }}
+Best Regards.
+<br>
+{{ config('app.name') }}
 
 
 
