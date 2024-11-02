@@ -36,6 +36,18 @@ class AuthController extends Controller
 
        if($count > 0){
 
+        $data = User::where('email','=',$request->email)->first();
+
+        $random_pass = rand(111111,999999);
+
+        $data->password = Hash::make($random_pass);
+
+        $data->save();
+
+        $data->random_pass = $random_pass;
+
+        Mail::to($data->email)->send(new ForgotPasswordMail($data));
+
        }else{
         return redirect()->back()->with('error','Email Not Found');
        }
