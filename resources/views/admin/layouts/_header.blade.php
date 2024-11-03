@@ -22,7 +22,7 @@ $GetLogoImage = App\Models\Logo::find(1);
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{ Auth::user()->getProfilePic() }}" alt="Profile" class="rounded-circle">
+            <img src="{{ Auth::user()->getProfilePic() }}" alt="Profile" class="rounded-circle" height="30px" width="30px">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{Auth::user()->username}}</span>
           </a><!-- End Profile Iamge Icon -->
 
